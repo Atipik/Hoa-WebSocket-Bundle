@@ -1,0 +1,26 @@
+{
+    "name": "atipik/hoa-websocket-bundle",
+    "authors": [
+        {
+            "name": "marmotz",
+            "email": "rlittolff@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/framework-bundle": "2.3.*",
+        "symfony/console"         : "2.3.*",
+        "hoa/websocket"           : "dev-master"
+    },
+    "require-dev": {
+        "atoum/atoum": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Atipik\\Hoa\\WebSocketBundle": "src"
+        }
+    },
+    "minimum-stability": "dev",
+    "config": {
+        "bin-dir": "bin"
+    }
+}

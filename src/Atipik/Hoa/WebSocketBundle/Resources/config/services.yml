@@ -1,0 +1,23 @@
+services:
+    hoa.websocket.runner:
+        class: %hoa.websocket.runner.class%
+        arguments: [@hoa.websocket.server, @hoa.websocket.logger, %hoa.websocket.node.class%]
+
+    hoa.websocket.server:
+        class: %hoa.websocket.server.class%
+        arguments: [@hoa.socket.server]
+
+    hoa.socket.server:
+        class: %hoa.socket.server.class%
+        arguments: ["tcp://%hoa.websocket.address%:%hoa.websocket.port%"]
+
+    hoa.websocket.logger:
+        class: %hoa.websocket.logger.class%
+
+    hoa.websocket.client:
+        class: %hoa.websocket.client.class%
+        arguments: [@hoa.socket.client]
+
+    hoa.socket.client:
+        class: %hoa.socket.client.class%
+        arguments: ["tcp://127.0.0.1:%hoa.websocket.port%"]
