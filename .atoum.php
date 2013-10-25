@@ -11,7 +11,7 @@ $report->addField(new atoum\report\fields\runner\result\logo());
 // CODE COVERAGE SETUP
 $coverageField = new atoum\report\fields\runner\coverage\html(
     basename(__DIR__),
-    $coveragePath = __DIR__ . '/tests/coverage'
+    $coveragePath = __DIR__ . '/tests/_coverage'
 );
 
 $coverageField->setRootUrl('file://' . $coveragePath . '/');

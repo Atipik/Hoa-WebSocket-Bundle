@@ -35,7 +35,7 @@ Add these lines to your require section:
 }
 ```
 
-### 1.2 Install packages
+### 1.2 Install dependencies
 
 ```shell
 composer update
@@ -88,6 +88,7 @@ hoa:
 
 By default, server will be started on 127.0.0.1:8080
 
+
 ## 2. Architecture
 
 The Symfony 2 command `php app/console hoa:websocketserver` has only one job: calling a runner.
@@ -95,6 +96,7 @@ The Symfony 2 command `php app/console hoa:websocketserver` has only one job: ca
 The runner links modules (your logic code) and WebSocket events which are managed by `Atipik\Hoa\WebSocketBundle\WebSocket\Server`.
 
 When the WebSocket server receives an event, the runner catches it and calls all subscribed modules.
+
 
 ## 3. Server
 
@@ -125,6 +127,8 @@ services:
             - { name: hoa.websocket.module }
 ```
 
+Don't forget to add `hoa.websocket.module` tag !
+
 - In this class, implement the `getSubscribedEvents` method:
 
 ```php
@@ -148,7 +152,7 @@ class MyModule extends Module
 
 - Add logic code:
 
-A bucket object is passed to event handlers, so import `Hoa\Core\Event\Bucket`.
+A bucket object is passed to event handlers, so you must import `Hoa\Core\Event\Bucket`.
 
 ```php
 <?php
@@ -176,7 +180,12 @@ class MyModule extends Module
     public function onMessage(Bucket $bucket)
     {
         $data = $bucket->getData();
-        $this->getLogger()->log('Data received in %s: ' . $data['message'], __METHOD__);
+
+        $this->getLogger()->log(
+            'Data received in %s: %s',
+            __METHOD__,
+            $data['message']
+        );
     }
 }
 ```
@@ -192,7 +201,9 @@ php app/console hoa:websocketserver
 #### 3.2.1 Modules group
 
 If you want to scale your server, you can affect modules to different group and launch server for one or more group.
+
 You can affect many modules in the same group
+
 If you launch the server without group, all modules will be used.
 
 - Just override `getGroup()` method in your module:
@@ -265,6 +276,8 @@ parameters:
 
 Hoa/Websocket allows you to override node class to add your own data.
 
+Of course, this bundle allow you to specify which class to use:
+
 - Create a node class which extends `Hoa\Websocket\Node`:
 
 ```php
@@ -286,6 +299,11 @@ class Node extends \Hoa\Websocket\Node
         $this->myData = $data;
 
         return $this;
+    }
+
+    public function doThingsWithMyData()
+    {
+        // ...
     }
 }
 ```
@@ -340,15 +358,19 @@ class MyModule extends Module
 }
 ```
 
+
 ## 4. Client
 
-No yet documentated
+If you want to communicate with a WebSocket Server, you can use service `hoa.websocket.client` by using `$this->get('hoa.websocket.client')` in your controller or to inject this service directly in services.yml.
+
+For more documentation about WebSocket Client, see [Hoa/WebSocket's documentation (fr)](http://hoa-project.net/Literature/Hack/Websocket.html#Ecrire_un_client).
+
 
 ## 5. Launch unit tests
 
 ```shell
 composer update
-./bin/atoum
+./vendor/bin/atoum
 ```
 
 

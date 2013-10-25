@@ -1,6 +1,11 @@
 {
     "name": "atipik/hoa-websocket-bundle",
+    "license": "MIT",
     "authors": [
+        {
+            "name": "atipik",
+            "email": "geek@atipik.fr"
+        },
         {
             "name": "marmotz",
             "email": "rlittolff@gmail.com"
@@ -16,11 +21,14 @@
     },
     "autoload": {
         "psr-0": {
-            "Atipik\\Hoa\\WebSocketBundle": "src"
+            "Atipik\\Hoa\\WebSocketBundle": ""
         }
     },
+    "target-dir": "Atipik/Hoa/WebSocketBundle",
     "minimum-stability": "dev",
-    "config": {
-        "bin-dir": "bin"
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
     }
 }
