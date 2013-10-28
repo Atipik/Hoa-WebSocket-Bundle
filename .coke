@@ -8,7 +8,10 @@ standard=Symfony2
 verbose=true
 
 # White list of files and directories (optional)
-src
+Command
+DependencyInjection
+Log
+WebSocket
 
 # Black list of files and directories (optional)
 #!file
