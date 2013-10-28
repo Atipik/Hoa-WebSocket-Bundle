@@ -152,7 +152,7 @@ class MyModule extends Module
 
 - Add logic code:
 
-A bucket object is passed to event handlers, so you must import `Hoa\Core\Event\Bucket`.
+You can get the current bucket by using `$this->getBucket()`.
 
 ```php
 <?php
@@ -160,7 +160,6 @@ A bucket object is passed to event handlers, so you must import `Hoa\Core\Event\
 namespace My\Bundle\WebSocket\Module;
 
 use Atipik\Hoa\WebSocketBundle\WebSocket\Module\Module;
-use Hoa\Core\Event\Bucket;
 
 class MyModule extends Module
 {
@@ -172,14 +171,14 @@ class MyModule extends Module
         );
     }
 
-    public function onOpen(Bucket $bucket)
+    public function onOpen()
     {
         $this->getLogger()->log('Here comes a new challenger !');
     }
 
-    public function onMessage(Bucket $bucket)
+    public function onMessage()
     {
-        $data = $bucket->getData();
+        $data = $this->getBucket()->getData();
 
         $this->getLogger()->log(
             'Data received in %s: %s',
@@ -324,17 +323,16 @@ parameters:
 namespace My\Bundle\WebSocket\Module;
 
 use Atipik\Hoa\WebSocketBundle\WebSocket\Module\Module;
-use Hoa\Core\Event\Bucket;
 
 class MyModule extends Module
 {
     // ...
 
-    public function onEvent1(Bucket $bucket)
+    public function onEvent1()
     {
         // ...
 
-        $node = $bucket->getSource()->getConnection()->getCurrentNode();
+        $node = $this->getNode();
 
         $node->setMyData('foobar');
 
@@ -343,11 +341,11 @@ class MyModule extends Module
 
     // ...
 
-    public function onEvent2(Bucket $bucket)
+    public function onEvent2()
     {
         // ...
 
-        $node = $bucket->getSource()->getConnection()->getCurrentNode();
+        $node = $this->getNode();
 
         $node->getMyData(); // contain 'foobar' set in event1
 
