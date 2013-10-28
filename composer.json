@@ -1,5 +1,5 @@
 {
-    "name": "atipik/hoa-websocket-bundle",
+    "name"   : "atipik/hoa-websocket-bundle",
     "license": "MIT",
     "authors": [
         {
@@ -7,7 +7,7 @@
             "email": "geek@atipik.fr"
         },
         {
-            "name": "marmotz",
+            "name": "Renaud LITTOLFF",
             "email": "rlittolff@gmail.com"
         }
     ],
