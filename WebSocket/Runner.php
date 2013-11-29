@@ -415,6 +415,12 @@ class Runner
             $this->initWebSocketServer()->run();
 
             return true;
+        } catch (Exception\Quit $e) {
+            $this->getLogger()->success(
+                $e->getMessage()
+            );
+
+            return true;
         } catch (\Exception $e) {
             $traces = array_reverse(explode(PHP_EOL, $e->getTraceAsString()));
 
