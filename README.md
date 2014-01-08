@@ -361,7 +361,7 @@ class MyModule extends Module
 
 If you want to communicate with a WebSocket Server, you can use service `hoa.websocket.client` by using `$this->get('hoa.websocket.client')` in your controller or to inject this service directly in services.yml.
 
-For more documentation about WebSocket Client, see [Hoa/WebSocket's documentation (fr)](http://hoa-project.net/Literature/Hack/Websocket.html#Ecrire_un_client).
+For more documentation about WebSocket Client, see [Hoa/WebSocket's documentation](http://hoa-project.net/Literature/Hack/Websocket.html#Write_a_client).
 
 
 ## 5. Launch unit tests
@@ -374,4 +374,4 @@ composer update
 
 ## 6. More documentation
 
-See [Hoa/WebSocket's documentation (fr)](http://hoa-project.net/Literature/Hack/Websocket.html) to know how to use How/WebSocket and to have an example of JavaScript code.
+See [Hoa/WebSocket's documentation)](http://hoa-project.net/Literature/Hack/Websocket.html) to know how to use How/WebSocket and to have an example of JavaScript code.
