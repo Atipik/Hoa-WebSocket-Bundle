@@ -6,6 +6,7 @@ use Atipik\Hoa\WebSocketBundle\Log\Logger;
 use Atipik\Hoa\WebSocketBundle\WebSocket\Server as WebSocketServer;
 use Hoa\Core\Event\Bucket;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\DependencyInjection\Container;
 
 /**
  * Bundle runner
@@ -18,6 +19,7 @@ class Runner
     const DEFAULT_ADDRESS    = '127.0.0.1';
     const DEFAULT_PORT       = '8080';
 
+    protected $container;
     protected $events  = array();
     protected $groups  = array();
     protected $logger;
@@ -28,14 +30,16 @@ class Runner
     /**
      * Constructor
      *
+     * @param Container                             $container
      * @param Hoa\Websocket\Server                  $webSocketServer
      * @param Atipik\Hoa\WebSocketBundle\Log\Logger $logger
      * @param string                                $nodeClass
      */
-    public function __construct(WebSocketServer $webSocketServer, Logger $logger, $nodeClass = null)
+    public function __construct(Container $container, WebSocketServer $webSocketServer, Logger $logger, $nodeClass = null)
     {
         $this
             ->init()
+            ->setContainer($container)
             ->setLogger($logger)
             ->setNodeClass($nodeClass)
             ->setWebSocketServer($webSocketServer)
@@ -104,6 +108,16 @@ class Runner
     public function getEvents()
     {
         return $this->events;
+    }
+
+    /**
+     * Returns container
+     *
+     * @return Symfony\Component\DependencyInjection\Container
+     */
+    public function getContainer()
+    {
+        return $this->container;
     }
 
     /**
@@ -469,6 +483,20 @@ class Runner
     public function setGroups(array $groups)
     {
         $this->groups = $groups;
+
+        return $this;
+    }
+
+    /**
+     * Set container
+     *
+     * @param Symfony\Component\DependencyInjection\Container $container
+     *
+     * @return self
+     */
+    public function setContainer(Container $container)
+    {
+        $this->container = $container;
 
         return $this;
     }

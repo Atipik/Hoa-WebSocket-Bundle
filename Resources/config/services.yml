@@ -1,7 +1,7 @@
 services:
     hoa.websocket.runner:
         class: %hoa.websocket.runner.class%
-        arguments: [@hoa.websocket.server, @hoa.websocket.logger, %hoa.websocket.node.class%]
+        arguments: [@service_container, @hoa.websocket.server, @hoa.websocket.logger, %hoa.websocket.node.class%]
 
     hoa.websocket.server:
         class: %hoa.websocket.server.class%
