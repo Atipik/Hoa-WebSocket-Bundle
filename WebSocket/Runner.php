@@ -3,10 +3,12 @@
 namespace Atipik\Hoa\WebSocketBundle\WebSocket;
 
 use Atipik\Hoa\WebSocketBundle\Log\Logger;
+use Atipik\Hoa\WebSocketBundle\WebSocket\ContainerTrait;
 use Atipik\Hoa\WebSocketBundle\WebSocket\Server as WebSocketServer;
 use Hoa\Core\Event\Bucket;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Bundle runner
@@ -14,8 +16,10 @@ use Symfony\Component\DependencyInjection\Container;
  * Called by command
  * hoa.websocket.runner service
  */
-class Runner
+class Runner extends ContainerAware
 {
+    use ContainerTrait;
+
     const DEFAULT_ADDRESS    = '127.0.0.1';
     const DEFAULT_PORT       = '8080';
 
@@ -30,12 +34,12 @@ class Runner
     /**
      * Constructor
      *
-     * @param Container                             $container
+     * @param ContainerInterface                    $container
      * @param Hoa\Websocket\Server                  $webSocketServer
      * @param Atipik\Hoa\WebSocketBundle\Log\Logger $logger
      * @param string                                $nodeClass
      */
-    public function __construct(Container $container, WebSocketServer $webSocketServer, Logger $logger, $nodeClass = null)
+    public function __construct(ContainerInterface $container, WebSocketServer $webSocketServer, Logger $logger, $nodeClass = null)
     {
         $this
             ->init()
@@ -483,20 +487,6 @@ class Runner
     public function setGroups(array $groups)
     {
         $this->groups = $groups;
-
-        return $this;
-    }
-
-    /**
-     * Set container
-     *
-     * @param Symfony\Component\DependencyInjection\Container $container
-     *
-     * @return self
-     */
-    public function setContainer(Container $container)
-    {
-        $this->container = $container;
 
         return $this;
     }

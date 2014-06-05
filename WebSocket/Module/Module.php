@@ -3,6 +3,7 @@
 namespace Atipik\Hoa\WebSocketBundle\WebSocket\Module;
 
 use Atipik\Hoa\WebSocketBundle\Log\Logger;
+use Atipik\Hoa\WebSocketBundle\WebSocket\ContainerTrait;
 use Atipik\Hoa\WebSocketBundle\WebSocket\Runner;
 use Hoa\Core\Event\Bucket;
 use Symfony\Component\DependencyInjection\ContainerAware;
@@ -13,6 +14,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 abstract class Module extends ContainerAware implements ModuleInterface
 {
+    use ContainerTrait;
+
     protected $logger;
     protected $bucket;
 
@@ -24,32 +27,6 @@ abstract class Module extends ContainerAware implements ModuleInterface
     public function getBucket()
     {
         return $this->bucket;
-    }
-
-    /**
-     * Returns container
-     *
-     * @return ContainerInterface
-     */
-    public function getContainer()
-    {
-        return $this->container;
-    }
-
-    /**
-     * Shortcut to return the Doctrine Registry service.
-     *
-     * @return Registry
-     *
-     * @throws \LogicException If DoctrineBundle is not available
-     */
-    public function getDoctrine()
-    {
-        if (!$this->getContainer()->has('doctrine')) {
-            throw new \LogicException('The DoctrineBundle is not registered in your application.');
-        }
-
-        return $this->getContainer()->get('doctrine');
     }
 
     /**
