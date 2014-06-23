@@ -225,6 +225,7 @@ class Runner extends ContainerAware
         $socket = $webSocketServer->getConnection()->getSocket();
 
         $this->getLogger()->log('<fg=yellow>Starting server...</fg=yellow>');
+        $this->getLogger()->log('Environment: <fg=green>%s</fg=green>', $this->getContainer()->get('kernel')->getEnvironment());
         $this->getLogger()->log('Class used:');
         $this->getLogger()->log('  Logger           : %s', get_class($this->getLogger()));
         $this->getLogger()->log('  Runner           : %s', get_class($this));
