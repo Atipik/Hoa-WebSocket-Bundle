@@ -32,7 +32,7 @@ class Logger
      *
      * @param string $format
      */
-    public function error($format/*, $arg1, $arg2, ... $argn */)
+    public function error($format/*, $arg1, $arg2, ... $argN */)
     {
         $args = func_get_args();
         $args[0] = '<bg=red;fg=white;options=bold>' . $format . '</bg=red;fg=white;options=bold>';
