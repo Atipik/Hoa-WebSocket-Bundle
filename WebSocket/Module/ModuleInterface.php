@@ -18,13 +18,6 @@ interface ModuleInterface
     public function getBucket();
 
     /**
-     * Returns container
-     *
-     * @return ContainerInterface
-     */
-    public function getContainer();
-
-    /**
      * Returns group name
      *
      * @return string
@@ -72,13 +65,6 @@ interface ModuleInterface
      * @return self
      */
     public function setBucket(Bucket $bucket = null);
-
-    /**
-     * Returns container
-     *
-     * @param ContainerInterface $container
-     */
-    public function setContainer(ContainerInterface $container = null);
 
     /**
      * Set current logger

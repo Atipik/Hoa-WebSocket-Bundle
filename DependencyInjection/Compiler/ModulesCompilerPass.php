@@ -32,14 +32,6 @@ class ModulesCompilerPass implements CompilerPassInterface
         foreach ($modules as $moduleServiceId => $attributes) {
             $module = $container->getDefinition($moduleServiceId);
 
-            // inject container
-            $module->addMethodCall(
-                'setContainer',
-                array(
-                    new Reference('service_container')
-                )
-            );
-
             // inject logger
             $module->addMethodCall(
                 'setLogger',

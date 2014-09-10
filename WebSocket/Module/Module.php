@@ -3,19 +3,14 @@
 namespace Atipik\Hoa\WebSocketBundle\WebSocket\Module;
 
 use Atipik\Hoa\WebSocketBundle\Log\Logger;
-use Atipik\Hoa\WebSocketBundle\WebSocket\ContainerTrait;
 use Atipik\Hoa\WebSocketBundle\WebSocket\Runner;
 use Hoa\Core\Event\Bucket;
-use Symfony\Component\DependencyInjection\ContainerAware;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Module
  */
-abstract class Module extends ContainerAware implements ModuleInterface
+abstract class Module implements ModuleInterface
 {
-    use ContainerTrait;
-
     protected $logger;
     protected $bucket;
 

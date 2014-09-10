@@ -37,9 +37,13 @@ class Runner extends atoum
                     ->isIdenticalTo($mockWebSocketServer)
                 ->mock($logger)
                     ->call('log')
-                        ->exactly(12)
+                        ->exactly(13)
                         ->withIdenticalArguments(
                             '<fg=yellow>Starting server...</fg=yellow>'
+                        )
+                            ->once()
+                        ->withIdenticalArguments(
+                            'Environment: <fg=green>%s</fg=green>'
                         )
                             ->once()
                         ->withIdenticalArguments(
