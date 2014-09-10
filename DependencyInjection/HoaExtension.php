@@ -25,67 +25,10 @@ class HoaExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $this->loadDefaultParameters($container);
         $this->loadParameters($container, $config, 'hoa.');
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
-    }
-
-    /**
-     * Load default parameters
-     *
-     * @param ContainerBuilder $container
-     */
-    public function loadDefaultParameters(ContainerBuilder $container)
-    {
-        // Server
-        if (!$container->hasParameter('hoa.websocket.runner.class')) {
-            $container->setParameter(
-                'hoa.websocket.runner.class',
-                'Atipik\Hoa\WebSocketBundle\WebSocket\Runner'
-            );
-        }
-
-        if (!$container->hasParameter('hoa.websocket.server.class')) {
-            $container->setParameter(
-                'hoa.websocket.server.class',
-                'Atipik\Hoa\WebSocketBundle\WebSocket\Server'
-            );
-        }
-
-        if (!$container->hasParameter('hoa.socket.server.class')) {
-            $container->setParameter(
-                'hoa.socket.server.class',
-                'Hoa\Socket\Server'
-            );
-        }
-
-        if (!$container->hasParameter('hoa.websocket.node.class')) {
-            $container->setParameter('hoa.websocket.node.class', null);
-        }
-
-        if (!$container->hasParameter('hoa.websocket.logger.class')) {
-            $container->setParameter(
-                'hoa.websocket.logger.class',
-                'Atipik\Hoa\WebSocketBundle\Log\Logger'
-            );
-        }
-
-        // Client
-        if (!$container->hasParameter('hoa.websocket.client.class')) {
-            $container->setParameter(
-                'hoa.websocket.client.class',
-                'Hoa\Websocket\Client'
-            );
-        }
-
-        if (!$container->hasParameter('hoa.socket.client.class')) {
-            $container->setParameter(
-                'hoa.socket.client.class',
-                'Hoa\Socket\Client'
-            );
-        }
     }
 
     /**

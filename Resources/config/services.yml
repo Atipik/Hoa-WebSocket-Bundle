@@ -1,3 +1,12 @@
+parameters:
+    hoa.websocket.runner.class: Atipik\Hoa\WebSocketBundle\WebSocket\Runner
+    hoa.websocket.server.class: Atipik\Hoa\WebSocketBundle\WebSocket\Server
+    hoa.socket.server.class:    Hoa\Socket\Server
+    hoa.websocket.node.class:   null
+    hoa.websocket.logger.class: Atipik\Hoa\WebSocketBundle\Log\Logger
+    hoa.websocket.client.class: Hoa\Websocket\Client
+    hoa.socket.client.class:    Hoa\Socket\Client
+
 services:
     hoa.websocket.runner:
         class: %hoa.websocket.runner.class%
