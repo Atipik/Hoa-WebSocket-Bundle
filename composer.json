@@ -28,6 +28,9 @@
             "Atipik\\Hoa\\WebSocketBundle": ""
         }
     },
+    "config": {
+        "bin-dir": "bin"
+    },
     "target-dir": "Atipik/Hoa/WebSocketBundle",
     "minimum-stability": "dev",
     "extra": {

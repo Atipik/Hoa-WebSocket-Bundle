@@ -7,8 +7,6 @@ use Atipik\Hoa\WebSocketBundle\WebSocket\ContainerTrait;
 use Atipik\Hoa\WebSocketBundle\WebSocket\Server as WebSocketServer;
 use Hoa\Core\Event\Bucket;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\DependencyInjection\ContainerAware;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Bundle runner
@@ -16,16 +14,14 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Called by command
  * hoa.websocket.runner service
  */
-class Runner extends ContainerAware
+class Runner
 {
-    use ContainerTrait;
-
     const DEFAULT_ADDRESS    = '127.0.0.1';
     const DEFAULT_PORT       = '8080';
 
-    protected $container;
     protected $events  = array();
     protected $groups  = array();
+    protected $kernelEnvironment;
     protected $logger;
     protected $modules = array();
     protected $nodeClass;
@@ -34,19 +30,19 @@ class Runner extends ContainerAware
     /**
      * Constructor
      *
-     * @param ContainerInterface                    $container
      * @param Hoa\Websocket\Server                  $webSocketServer
      * @param Atipik\Hoa\WebSocketBundle\Log\Logger $logger
      * @param string                                $nodeClass
+     * @param string                                $kernelEnvironment
      */
-    public function __construct(ContainerInterface $container, WebSocketServer $webSocketServer, Logger $logger, $nodeClass = null)
+    public function __construct(WebSocketServer $webSocketServer, Logger $logger, $nodeClass = null, $kernelEnvironment = null)
     {
         $this
             ->init()
-            ->setContainer($container)
             ->setLogger($logger)
             ->setNodeClass($nodeClass)
             ->setWebSocketServer($webSocketServer)
+            ->setKernelEnvironment($kernelEnvironment)
         ;
     }
 
@@ -112,16 +108,6 @@ class Runner extends ContainerAware
     public function getEvents()
     {
         return $this->events;
-    }
-
-    /**
-     * Returns container
-     *
-     * @return Symfony\Component\DependencyInjection\Container
-     */
-    public function getContainer()
-    {
-        return $this->container;
     }
 
     /**
@@ -200,6 +186,7 @@ class Runner extends ContainerAware
             ->setNodeClass(null)
             ->setLogger(null)
             ->setWebSocketServer(null)
+            ->setKernelEnvironment(null)
         ;
     }
 
@@ -225,7 +212,7 @@ class Runner extends ContainerAware
         $socket = $webSocketServer->getConnection()->getSocket();
 
         $this->getLogger()->log('<fg=yellow>Starting server...</fg=yellow>');
-        $this->getLogger()->log('Environment: <fg=green>%s</fg=green>', $this->getContainer()->get('kernel')->getEnvironment());
+        $this->getLogger()->log('Environment: <fg=green>%s</fg=green>', $this->kernelEnvironment);
         $this->getLogger()->log('Class used:');
         $this->getLogger()->log('  Logger           : %s', get_class($this->getLogger()));
         $this->getLogger()->log('  Runner           : %s', get_class($this));
@@ -548,6 +535,20 @@ class Runner extends ContainerAware
     public function setWebSocketServer(WebSocketServer $webSocketServer = null)
     {
         $this->webSocketServer = $webSocketServer;
+
+        return $this;
+    }
+
+    /**
+     * Set kernel environment
+     *
+     * @param string $kernelEnvironment
+     *
+     * @return self
+     */
+    public function setKernelEnvironment($kernelEnvironment)
+    {
+        $this->kernelEnvironment = $kernelEnvironment;
 
         return $this;
     }
