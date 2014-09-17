@@ -1,7 +1,5 @@
 <?php
 
-use atoum;
-
 $report = $script->addDefaultReport();
 
 // LOGO
@@ -11,7 +9,7 @@ $report->addField(new atoum\report\fields\runner\result\logo());
 // CODE COVERAGE SETUP
 $coverageField = new atoum\report\fields\runner\coverage\html(
     basename(__DIR__),
-    $coveragePath = __DIR__ . '/tests/_coverage'
+    $coveragePath = __DIR__ . '/tests/.coverage'
 );
 
 $coverageField->setRootUrl('file://' . $coveragePath . '/');
