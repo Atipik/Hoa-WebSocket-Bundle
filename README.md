@@ -1,5 +1,7 @@
 # Atipik/HoaWebSocketBundle
 
+[![Build Status](https://secure.travis-ci.org/Atipik/Hoa-WebSocket-Bundle.png)](http://travis-ci.org/Atipik/Hoa-WebSocket-Bundle)
+
 This bundle allows you to use Hoa/Websocket/Server and Hoa/Websocket/Client into Symfony2.
 
 With a simple configuration, you will be able to launch your WebSocket server
