@@ -20,14 +20,14 @@ class ModulesCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('hoa.websocket.runner')
-        ||  !$container->hasDefinition('hoa.websocket.logger')
+        if (!$container->hasDefinition('atipik_hoa_web_socket.runner')
+        ||  !$container->hasDefinition('atipik_hoa_web_socket.logger')
         ||  !$container->hasDefinition('service_container')) {
             return;
         }
 
-        $runner  = $container->getDefinition('hoa.websocket.runner');
-        $modules = $container->findTaggedServiceIds('hoa.websocket.module');
+        $runner  = $container->getDefinition('atipik_hoa_web_socket.runner');
+        $modules = $container->findTaggedServiceIds('atipik_hoa_web_socket.module');
 
         foreach ($modules as $moduleServiceId => $attributes) {
             $module = $container->getDefinition($moduleServiceId);
@@ -36,7 +36,7 @@ class ModulesCompilerPass implements CompilerPassInterface
             $module->addMethodCall(
                 'setLogger',
                 array(
-                    new Reference('hoa.websocket.logger')
+                    new Reference('atipik_hoa_web_socket.logger')
                 )
             );
 

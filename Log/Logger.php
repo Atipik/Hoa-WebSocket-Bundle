@@ -7,7 +7,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Logger
  *
- * hoa.websocket.logger service
+ * atipik_hoa_web_socket.logger service
  */
 class Logger
 {

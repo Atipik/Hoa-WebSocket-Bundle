@@ -74,7 +74,7 @@ To enable this bundle, you must add these lines in your `config.yml`:
 
 ```yaml
 # app/config/config.yml
-hoa:
+atipik_hoa_web_socket:
     websocket:  ~
 ```
 
@@ -82,10 +82,9 @@ You can also specify address and port.
 
 ```yaml
 # app/config/config.yml
-hoa:
-    websocket:
-        address : 1.3.3.7
-        port    : 4242
+atipik_hoa_web_socket:
+    address : 1.3.3.7
+    port    : 4242
 ```
 
 By default, server will be started on 127.0.0.1:8080
@@ -126,10 +125,10 @@ services:
     my_bundle.my_module:
         class: My\Bundle\WebSocket\Module\MyModule
         tags:
-            - { name: hoa.websocket.module }
+            - { name: atipik_hoa_web_socket.module }
 ```
 
-Don't forget to add `hoa.websocket.module` tag !
+Don't forget to add `atipik_hoa_web_socket.module` tag !
 
 - In this class, implement the `getSubscribedEvents` method:
 
@@ -257,7 +256,7 @@ If you want to modify how the runner works, you should override its class:
 ```yaml
 # src/My/Bundle/Resources/config/services.yml
 parameters:
-    hoa.websocket.runner.class: My\Bundle\WebSocket\Runner
+    atipik_hoa_web_socket.runner.class: My\Bundle\WebSocket\Runner
 ```
 
 #### 3.2.3 Override server class
@@ -270,7 +269,7 @@ If you want to modify how the WebSocket Server works, you should override its cl
 ```yaml
 # src/My/Bundle/Resources/config/services.yml
 parameters:
-    hoa.websocket.server.class: My\Bundle\WebSocket\Server
+    atipik_hoa_web_socket.server.class: My\Bundle\WebSocket\Server
 ```
 
 #### 3.2.4 Override node class
@@ -314,7 +313,7 @@ class Node extends \Hoa\Websocket\Node
 ```yaml
 # src/My/Bundle/Resources/config/services.yml
 parameters:
-    hoa.websocket.node.class: My\Bundle\WebSocket\Node
+    atipik_hoa_web_socket.node.class: My\Bundle\WebSocket\Node
 ```
 
 - You can now access the current node, an instance of your node class:
@@ -361,7 +360,7 @@ class MyModule extends Module
 
 ## 4. Client
 
-If you want to communicate with a WebSocket Server, you can use service `hoa.websocket.client` by using `$this->get('hoa.websocket.client')` in your controller or to inject this service directly in services.yml.
+If you want to communicate with a WebSocket Server, you can use service `atipik_hoa_web_socket.client` by using `$this->get('atipik_hoa_web_socket.client')` in your controller or to inject this service directly in services.yml.
 
 For more documentation about WebSocket Client, see [Hoa/WebSocket's documentation](http://hoa-project.net/Literature/Hack/Websocket.html#Write_a_client).
 

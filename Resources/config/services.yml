@@ -1,23 +1,34 @@
+parameters:
+    atipik_hoa_web_socket.runner.class        : Atipik\Hoa\WebSocketBundle\WebSocket\Runner
+    atipik_hoa_web_socket.server.class        : Atipik\Hoa\WebSocketBundle\WebSocket\Server
+    atipik_hoa_web_socket.socket.server.class : Hoa\Socket\Server
+    atipik_hoa_web_socket.node.class          : null
+    atipik_hoa_web_socket.logger.class        : Atipik\Hoa\WebSocketBundle\Log\Logger
+    atipik_hoa_web_socket.client.class        : Hoa\Websocket\Client
+    atipik_hoa_web_socket.socket.client.class : Hoa\Socket\Client
+    atipik_hoa_web_socket.address             : 127.0.0.1
+    atipik_hoa_web_socket.port                : 8080
+
 services:
-    hoa.websocket.runner:
-        class: %hoa.websocket.runner.class%
-        arguments: [@hoa.websocket.server, @hoa.websocket.logger, %hoa.websocket.node.class%, %kernel.environment%]
+    atipik_hoa_web_socket.runner:
+        class: %atipik_hoa_web_socket.runner.class%
+        arguments: [@atipik_hoa_web_socket.server, @atipik_hoa_web_socket.logger, %atipik_hoa_web_socket.node.class%, %kernel.environment%]
 
-    hoa.websocket.server:
-        class: %hoa.websocket.server.class%
-        arguments: [@hoa.socket.server]
+    atipik_hoa_web_socket.server:
+        class: %atipik_hoa_web_socket.server.class%
+        arguments: [@atipik_hoa_web_socket.socket.server]
 
-    hoa.socket.server:
-        class: %hoa.socket.server.class%
-        arguments: ["tcp://%hoa.websocket.address%:%hoa.websocket.port%"]
+    atipik_hoa_web_socket.socket.server:
+        class: %atipik_hoa_web_socket.socket.server.class%
+        arguments: ["tcp://%atipik_hoa_web_socket.address%:%atipik_hoa_web_socket.port%"]
 
-    hoa.websocket.logger:
-        class: %hoa.websocket.logger.class%
+    atipik_hoa_web_socket.logger:
+        class: %atipik_hoa_web_socket.logger.class%
 
-    hoa.websocket.client:
-        class: %hoa.websocket.client.class%
-        arguments: [@hoa.socket.client]
+    atipik_hoa_web_socket.client:
+        class: %atipik_hoa_web_socket.client.class%
+        arguments: [@atipik_hoa_web_socket.socket.client]
 
-    hoa.socket.client:
-        class: %hoa.socket.client.class%
-        arguments: ["tcp://localhost:%hoa.websocket.port%"]
+    atipik_hoa_web_socket.socket.client:
+        class: %atipik_hoa_web_socket.socket.client.class%
+        arguments: ["tcp://localhost:%atipik_hoa_web_socket.port%"]

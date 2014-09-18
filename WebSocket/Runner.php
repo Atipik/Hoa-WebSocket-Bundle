@@ -12,13 +12,10 @@ use Symfony\Component\Console\Output\OutputInterface;
  * Bundle runner
  *
  * Called by command
- * hoa.websocket.runner service
+ * atipik_hoa_web_socket.runner service
  */
 class Runner
 {
-    const DEFAULT_ADDRESS    = '127.0.0.1';
-    const DEFAULT_PORT       = '8080';
-
     protected $events  = array();
     protected $groups  = array();
     protected $kernelEnvironment;

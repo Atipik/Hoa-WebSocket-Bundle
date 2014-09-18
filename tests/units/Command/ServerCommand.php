@@ -53,9 +53,9 @@ class ServerCommand extends atoum
             ->given(
                 $this->calling($mockContainer)->get = function($service) use($mockRunner, $mockLogger) {
                     switch($service) {
-                        case 'hoa.websocket.logger':
+                        case 'atipik_hoa_web_socket.logger':
                             return $mockLogger;
-                        case 'hoa.websocket.runner':
+                        case 'atipik_hoa_web_socket.runner':
                             return $mockRunner;
                     }
                 }

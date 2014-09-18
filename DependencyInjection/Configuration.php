@@ -18,21 +18,14 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('hoa');
+        $rootNode = $treeBuilder->root('atipik_hoa_web_socket');
 
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
-                ->arrayNode('websocket')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->scalarNode('address')
-                            ->defaultValue(Runner::DEFAULT_ADDRESS)
-                        ->end()
-                        ->scalarNode('port')
-                            ->defaultValue(Runner::DEFAULT_PORT)
-                        ->end()
-                    ->end()
+                ->scalarNode('address')
+                ->end()
+                ->scalarNode('port')
                 ->end()
             ->end()
         ;

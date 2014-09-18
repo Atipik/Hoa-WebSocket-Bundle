@@ -27,10 +27,10 @@ class ServerCommand extends ContainerAwareCommand
         $container = $this->getContainer();
 
         // inject output in logger
-        $container->get('hoa.websocket.logger')->setOutput($output);
+        $container->get('atipik_hoa_web_socket.logger')->setOutput($output);
 
         // get runner
-        $runner = $container->get('hoa.websocket.runner');
+        $runner = $container->get('atipik_hoa_web_socket.runner');
 
         $groups = $input->getOption('group');
 

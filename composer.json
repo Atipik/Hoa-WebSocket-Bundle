@@ -15,11 +15,7 @@
         "php"                      : ">=5.4",
         "symfony/framework-bundle" : "~2.3",
         "symfony/console"          : "~2.3",
-        "hoa/websocket"            : "dev-master",
-        "hoa/core"   : "dev-master as 1.0",
-        "hoa/socket" : "dev-master as 0.0",
-        "hoa/http"   : "dev-master as 0.0",
-        "hoa/stream" : "dev-master as 0.0"
+        "hoa/websocket"            : "dev-master"
     },
     "require-dev": {
         "atoum/atoum": "dev-master"

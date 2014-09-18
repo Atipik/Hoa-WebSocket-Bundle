@@ -21,7 +21,6 @@ class AtipikHoaWebSocketBundle extends Bundle
     {
         parent::build($container);
 
-        $container->registerExtension(new HoaExtension());
         $container->addCompilerPass(new ModulesCompilerPass());
     }
 }
