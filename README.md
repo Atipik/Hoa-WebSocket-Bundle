@@ -16,24 +16,8 @@ Add these lines to your require section:
 ```json
 {
     "require": {
-        "hoa/core"                    : "@dev",
-        "hoa/http"                    : "@dev",
-        "hoa/socket"                  : "@dev",
-        "hoa/stream"                  : "@dev",
-        "hoa/websocket"               : "@dev",
-        "atipik/hoa-websocket-bundle" : "@dev"
+        "atipik/hoa-websocket-bundle" : "1.*@dev"
     }
-}
-```
-
-**Or** just `"atipik/hoa-websocket-bundle" : "@dev"` and set the `minimum-stability` to `dev`:
-
-```json
-{
-    "require": {
-        "atipik/hoa-websocket-bundle" : "@dev"
-    },
-    "minimum-stability": "dev"
 }
 ```
 
