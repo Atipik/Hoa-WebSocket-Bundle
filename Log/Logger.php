@@ -101,7 +101,7 @@ class Logger
             }
 
             $output->writeln(
-                vsprintf(
+                @vsprintf(
                     $date . $prefix . $format,
                     $args
                 )
