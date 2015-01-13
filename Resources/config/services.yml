@@ -6,8 +6,10 @@ parameters:
     atipik_hoa_web_socket.logger.class        : Atipik\Hoa\WebSocketBundle\Log\Logger
     atipik_hoa_web_socket.client.class        : Hoa\Websocket\Client
     atipik_hoa_web_socket.socket.client.class : Hoa\Socket\Client
-    atipik_hoa_web_socket.address             : 127.0.0.1
-    atipik_hoa_web_socket.port                : 8080
+    atipik_hoa_web_socket.listen_address      : 127.0.0.1
+    atipik_hoa_web_socket.listen_port         : 8080
+    atipik_hoa_web_socket.address             : %atipik_hoa_web_socket.listen_address%
+    atipik_hoa_web_socket.port                : %atipik_hoa_web_socket.listen_port%
 
 services:
     atipik_hoa_web_socket.runner:
@@ -20,7 +22,7 @@ services:
 
     atipik_hoa_web_socket.socket.server:
         class: %atipik_hoa_web_socket.socket.server.class%
-        arguments: ["tcp://%atipik_hoa_web_socket.address%:%atipik_hoa_web_socket.port%"]
+        arguments: ["tcp://%atipik_hoa_web_socket.listen_address%:%atipik_hoa_web_socket.listen_port%"]
 
     atipik_hoa_web_socket.logger:
         class: %atipik_hoa_web_socket.logger.class%
@@ -31,4 +33,4 @@ services:
 
     atipik_hoa_web_socket.socket.client:
         class: %atipik_hoa_web_socket.socket.client.class%
-        arguments: ["tcp://localhost:%atipik_hoa_web_socket.port%"]
+        arguments: ["tcp://%atipik_hoa_web_socket.address%:%atipik_hoa_web_socket.port%"]
