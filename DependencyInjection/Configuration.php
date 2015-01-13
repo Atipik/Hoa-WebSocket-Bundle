@@ -23,10 +23,10 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
-                ->scalarNode('address')
-                ->end()
-                ->scalarNode('port')
-                ->end()
+                ->scalarNode('listen_address')->end()
+                ->scalarNode('listen_port')->end()
+                ->scalarNode('address')->end()
+                ->scalarNode('port')->end()
             ->end()
         ;
 

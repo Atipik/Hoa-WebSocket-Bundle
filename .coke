@@ -2,7 +2,7 @@
 command=phpcs
 
 # Standard used by PHP CodeSniffer (required)
-standard=Symfony2
+standard=PSR2
 
 # Verbose mode (optional - default: false)
 verbose=true
