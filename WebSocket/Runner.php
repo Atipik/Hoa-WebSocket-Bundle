@@ -250,13 +250,17 @@ class Runner
     {
         $module->setBucket($bucket);
 
-        return call_user_func(
+        $result = call_user_func(
             array(
                 $module,
                 $method
             ),
             $additionnalData
         );
+
+        $module->clearBucket();
+
+        return $result;
     }
 
     /**
