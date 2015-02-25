@@ -15,18 +15,6 @@ abstract class Module implements ModuleInterface
     protected $bucket;
 
     /**
-     * Clear current bucket
-     *
-     * @return self
-     */
-    public function clearBucket()
-    {
-        $this->bucket = null;
-
-        return $this;
-    }
-
-    /**
      * Returns current bucket
      *
      * @return Bucket
