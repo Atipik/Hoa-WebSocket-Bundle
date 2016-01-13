@@ -5,7 +5,7 @@ namespace Atipik\Hoa\WebSocketBundle\WebSocket;
 use Atipik\Hoa\WebSocketBundle\Log\Logger;
 use Atipik\Hoa\WebSocketBundle\WebSocket\ContainerTrait;
 use Atipik\Hoa\WebSocketBundle\WebSocket\Server as WebSocketServer;
-use Hoa\Core\Event\Bucket;
+use Hoa\Event\Bucket;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -312,7 +312,7 @@ class Runner
     /**
      * Fire a "binary message" event
      *
-     * @param Hoa\Core\Event\Bucket $bucket
+     * @param Hoa\Event\Bucket $bucket
      */
     public function onBinaryMessage(Bucket $bucket)
     {
@@ -322,7 +322,7 @@ class Runner
     /**
      * Fire a "close" event
      *
-     * @param Hoa\Core\Event\Bucket $bucket
+     * @param Hoa\Event\Bucket $bucket
      */
     public function onClose(Bucket $bucket)
     {
@@ -332,7 +332,7 @@ class Runner
     /**
      * Fire a "error" event
      *
-     * @param Hoa\Core\Event\Bucket $bucket
+     * @param Hoa\Event\Bucket $bucket
      */
     public function onError(Bucket $bucket)
     {
@@ -343,7 +343,7 @@ class Runner
      * Fire an event
      *
      * @param string                $event
-     * @param Hoa\Core\Event\Bucket $bucket
+     * @param Hoa\Event\Bucket $bucket
      * @param mixed                 $additionnalData
      * @param boolean               $log
      *
@@ -380,7 +380,7 @@ class Runner
     /**
      * Fire a "message" event
      *
-     * @param Hoa\Core\Event\Bucket $bucket
+     * @param Hoa\Event\Bucket $bucket
      */
     public function onMessage(Bucket $bucket)
     {
@@ -390,7 +390,7 @@ class Runner
     /**
      * Fire a "open" event
      *
-     * @param Hoa\Core\Event\Bucket $bucket
+     * @param Hoa\Event\Bucket $bucket
      */
     public function onOpen(Bucket $bucket)
     {
@@ -400,7 +400,7 @@ class Runner
     /**
      * Fire a "ping" event
      *
-     * @param Hoa\Core\Event\Bucket $bucket
+     * @param Hoa\Event\Bucket $bucket
      */
     public function onPing(Bucket $bucket)
     {

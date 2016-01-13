@@ -3,8 +3,9 @@
 namespace Atipik\Hoa\WebSocketBundle\WebSocket\Module;
 
 use Atipik\Hoa\WebSocketBundle\Log\Logger;
-use Hoa\Core\Event\Bucket;
+use Hoa\Event\Bucket;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+
 /**
  * Module interface
  */
@@ -13,7 +14,7 @@ interface ModuleInterface
     /**
      * Returns current bucket
      *
-     * @return Hoa\Core\Event\Bucket
+     * @return Hoa\Event\Bucket
      */
     public function getBucket();
 
@@ -60,7 +61,7 @@ interface ModuleInterface
     /**
      * Set current bucket
      *
-     * @param Hoa\Core\Event\Bucket $bucket
+     * @param Hoa\Event\Bucket $bucket
      *
      * @return self
      */
