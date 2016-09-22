@@ -11,7 +11,7 @@ use mock\Atipik\Hoa\WebSocketBundle\Tests\Units\WebSocket\testModule1 as mockTes
 use mock\Atipik\Hoa\WebSocketBundle\Tests\Units\WebSocket\testModule2 as mockTestModule2;
 use mock\Atipik\Hoa\WebSocketBundle\Log\Logger                        as mockLogger;
 use mock\Atipik\Hoa\WebSocketBundle\WebSocket\Server                  as mockWebSocketServer;
-use mock\Hoa\Core\Event\Bucket                                              as mockBucket;
+use mock\Hoa\Event\Bucket                                              as mockBucket;
 use mock\Symfony\Component\Console\Output\OutputInterface                   as mockOutput;
 
 

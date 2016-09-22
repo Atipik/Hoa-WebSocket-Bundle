@@ -4,7 +4,7 @@ namespace Atipik\Hoa\WebSocketBundle\WebSocket\Module;
 
 use Atipik\Hoa\WebSocketBundle\Log\Logger;
 use Atipik\Hoa\WebSocketBundle\WebSocket\Runner;
-use Hoa\Core\Event\Bucket;
+use Hoa\Event\Bucket;
 
 /**
  * Module

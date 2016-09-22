@@ -58,8 +58,7 @@ To enable this bundle, you must add these lines in your `config.yml`:
 
 ```yaml
 # app/config/config.yml
-atipik_hoa_web_socket:
-    websocket:  ~
+atipik_hoa_web_socket: ~
 ```
 
 You can also specify address and port.
