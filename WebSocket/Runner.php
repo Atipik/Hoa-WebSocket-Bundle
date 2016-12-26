@@ -2,6 +2,7 @@
 
 namespace Atipik\Hoa\WebSocketBundle\WebSocket;
 
+use Atipik\Hoa\WebSocketBundle\Exception\Quit;
 use Atipik\Hoa\WebSocketBundle\Log\Logger;
 use Atipik\Hoa\WebSocketBundle\WebSocket\ContainerTrait;
 use Atipik\Hoa\WebSocketBundle\WebSocket\Server as WebSocketServer;
@@ -336,6 +337,12 @@ class Runner
      */
     public function onError(Bucket $bucket)
     {
+        $data = $bucket->getData();
+
+        if (isset($data['exception']) && $data['exception'] instanceof Quit) {
+            throw $data['exception'];
+        }
+
         $this->onEvent('error', $bucket);
     }
 
