@@ -2,9 +2,9 @@
 
 namespace Atipik\Hoa\WebSocketBundle\WebSocket;
 
-use Atipik\Hoa\WebSocketBundle\Exception\Quit;
 use Atipik\Hoa\WebSocketBundle\Log\Logger;
 use Atipik\Hoa\WebSocketBundle\WebSocket\ContainerTrait;
+use Atipik\Hoa\WebSocketBundle\WebSocket\Exception\Quit;
 use Atipik\Hoa\WebSocketBundle\WebSocket\Server as WebSocketServer;
 use Hoa\Event\Bucket;
 use Symfony\Component\Console\Output\OutputInterface;
