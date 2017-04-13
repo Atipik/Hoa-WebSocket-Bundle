@@ -14,11 +14,11 @@ parameters:
 services:
     atipik_hoa_web_socket.runner:
         class: %atipik_hoa_web_socket.runner.class%
-        arguments: [@atipik_hoa_web_socket.server, @atipik_hoa_web_socket.logger, %atipik_hoa_web_socket.node.class%, %kernel.environment%]
+        arguments: ["@atipik_hoa_web_socket.server", "@atipik_hoa_web_socket.logger", %atipik_hoa_web_socket.node.class%, %kernel.environment%]
 
     atipik_hoa_web_socket.server:
         class: %atipik_hoa_web_socket.server.class%
-        arguments: [@atipik_hoa_web_socket.socket.server]
+        arguments: ["@atipik_hoa_web_socket.socket.server"]
 
     atipik_hoa_web_socket.socket.server:
         class: %atipik_hoa_web_socket.socket.server.class%
@@ -29,7 +29,7 @@ services:
 
     atipik_hoa_web_socket.client:
         class: %atipik_hoa_web_socket.client.class%
-        arguments: [@atipik_hoa_web_socket.socket.client]
+        arguments: ["@atipik_hoa_web_socket.socket.client"]
 
     atipik_hoa_web_socket.socket.client:
         class: %atipik_hoa_web_socket.socket.client.class%
