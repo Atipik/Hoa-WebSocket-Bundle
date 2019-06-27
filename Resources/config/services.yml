@@ -8,29 +8,29 @@ parameters:
     atipik_hoa_web_socket.socket.client.class : Hoa\Socket\Client
     atipik_hoa_web_socket.listen_address      : 127.0.0.1
     atipik_hoa_web_socket.listen_port         : 8080
-    atipik_hoa_web_socket.address             : %atipik_hoa_web_socket.listen_address%
-    atipik_hoa_web_socket.port                : %atipik_hoa_web_socket.listen_port%
+    atipik_hoa_web_socket.address             : "%atipik_hoa_web_socket.listen_address%"
+    atipik_hoa_web_socket.port                : "%atipik_hoa_web_socket.listen_port%"
 
 services:
     atipik_hoa_web_socket.runner:
-        class: %atipik_hoa_web_socket.runner.class%
-        arguments: ["@atipik_hoa_web_socket.server", "@atipik_hoa_web_socket.logger", %atipik_hoa_web_socket.node.class%, %kernel.environment%]
+        class: "%atipik_hoa_web_socket.runner.class%"
+        arguments: ["@atipik_hoa_web_socket.server", "@atipik_hoa_web_socket.logger", "%atipik_hoa_web_socket.node.class%", "%kernel.environment%"]
 
     atipik_hoa_web_socket.server:
-        class: %atipik_hoa_web_socket.server.class%
+        class: "%atipik_hoa_web_socket.server.class%"
         arguments: ["@atipik_hoa_web_socket.socket.server"]
 
     atipik_hoa_web_socket.socket.server:
-        class: %atipik_hoa_web_socket.socket.server.class%
+        class: "%atipik_hoa_web_socket.socket.server.class%"
         arguments: ["tcp://%atipik_hoa_web_socket.listen_address%:%atipik_hoa_web_socket.listen_port%"]
 
     atipik_hoa_web_socket.logger:
-        class: %atipik_hoa_web_socket.logger.class%
+        class: "%atipik_hoa_web_socket.logger.class%"
 
     atipik_hoa_web_socket.client:
-        class: %atipik_hoa_web_socket.client.class%
+        class: "%atipik_hoa_web_socket.client.class%"
         arguments: ["@atipik_hoa_web_socket.socket.client"]
 
     atipik_hoa_web_socket.socket.client:
-        class: %atipik_hoa_web_socket.socket.client.class%
+        class: "%atipik_hoa_web_socket.socket.client.class%"
         arguments: ["tcp://%atipik_hoa_web_socket.address%:%atipik_hoa_web_socket.port%"]
